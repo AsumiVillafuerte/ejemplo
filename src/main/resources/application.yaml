@@ -1,0 +1,31 @@
+# ============================================================
+# DEPENDENCIAS USADAS EN EL PROYECTO
+# ============================================================
+# spring-boot-starter-data-r2dbc  -> Acceso reactivo a BD
+# spring-boot-starter-webflux     -> API REST reactiva
+# h2                              -> Base de datos en memoria
+# r2dbc-h2                        -> Driver reactivo para H2
+# lombok                          -> Boilerplate (getters, setters...)
+# spring-boot-starter-data-r2dbc-test -> Testing R2DBC
+# spring-boot-starter-webflux-test    -> Testing WebFlux
+# ============================================================
+
+spring:
+  application:
+    name: asumi
+
+  r2dbc:
+    url: r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_LOWER=TRUE
+    username: ${SECRET_USERNAME:sa}
+    password: ${SECRET_PASSWORD:password}
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+
+server:
+  port: ${APP_PORT:8085}

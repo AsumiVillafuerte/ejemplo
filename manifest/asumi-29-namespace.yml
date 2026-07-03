@@ -1,0 +1,6 @@
+# kubectl create namespace asumi-villafuerte-29 (COMANDO)
+# kubectl apply -f asumi-villafuerte-29-namespace.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: asumi-29-namespace

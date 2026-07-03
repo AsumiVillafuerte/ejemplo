@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asumi-29-deployment
+  namespace: asumi-29-namespace
+  labels:
+    app: asumi-29
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: asumi-29
+  template:
+    metadata:
+      labels:
+        app: asumi-29
+    spec:
+      containers:
+        - name: asumi-29
+          image: asumi27/ht-29-asumi-villafuerte:v6
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9090
+          env:
+            - name: APP_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: app_port
+                  name: asumi-29-secret
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: asumi-29-secret
+            - name: SECRET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: asumi-29-secret

@@ -1,0 +1,113 @@
+{
+	"info": {
+		"name": "Asumi API - Personas",
+		"description": "Coleccion de endpoints para el CRUD de personas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar todas las personas",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "http://localhost:8085/api/personas",
+					"host": ["http://localhost"],
+					"port": "8085",
+					"path": ["api", "personas"]
+				}
+			}
+		},
+		{
+			"name": "Obtener persona por ID",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "http://localhost:8085/api/personas/1",
+					"host": ["http://localhost"],
+					"port": "8085",
+					"path": ["api", "personas", "1"]
+				}
+			}
+		},
+		{
+			"name": "Crear persona",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Carlos\",\n  \"apellido\": \"Lopez\",\n  \"email\": \"carlos@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8085/api/personas",
+					"host": ["http://localhost"],
+					"port": "8085",
+					"path": ["api", "personas"]
+				}
+			}
+		},
+		{
+			"name": "Editar persona",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Carlos Editado\",\n  \"apellido\": \"Lopez Editado\",\n  \"email\": \"carlos.editado@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8085/api/personas/1",
+					"host": ["http://localhost"],
+					"port": "8085",
+					"path": ["api", "personas", "1"]
+				}
+			}
+		},
+		{
+			"name": "Eliminado logico (INACTIVO)",
+			"request": {
+				"method": "PATCH",
+				"url": {
+					"raw": "http://localhost:8085/api/personas/delete/1",
+					"host": ["http://localhost"],
+					"port": "8085",
+					"path": ["api", "personas", "delete", "1"]
+				}
+			}
+		},
+		{
+			"name": "Restaurado logico (ACTIVO)",
+			"request": {
+				"method": "PATCH",
+				"url": {
+					"raw": "http://localhost:8085/api/personas/restore/1",
+					"host": ["http://localhost"],
+					"port": "8085",
+					"path": ["api", "personas", "restore", "1"]
+				}
+			}
+		},
+		{
+			"name": "Eliminado fisico (DELETE)",
+			"request": {
+				"method": "DELETE",
+				"url": {
+					"raw": "http://localhost:8085/api/personas/1",
+					"host": ["http://localhost"],
+					"port": "8085",
+					"path": ["api", "personas", "1"]
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: asumi-29-service
+  namespace: asumi-29-namespace
+  labels:
+    app: asumi-29
+spec:
+  selector:
+    app: asumi-29
+  type: NodePort
+  ports:
+    - port: 9090
+      protocol: TCP
+      targetPort: 9090
+      nodePort: 30080
