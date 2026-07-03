@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producto-29-deployment
+  namespace: producto-29-namespace
+  labels:
+    app: producto-29
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: producto-29
+  template:
+    metadata:
+      labels:
+        app: producto-29
+    spec:
+      containers:
+        - name: producto-29
+          image: asumi27/producto-29:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: app_port
+                  name: producto-29-secret
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: producto-29-secret
+            - name: SECRET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: producto-29-secret

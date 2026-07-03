@@ -1,0 +1,6 @@
+# kubectl create namespace producto-villafuerte-29 (COMANDO)
+# kubectl apply -f producto-villafuerte-29-namespace.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: producto-29-namespace

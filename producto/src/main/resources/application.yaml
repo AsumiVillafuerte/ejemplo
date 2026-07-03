@@ -1,0 +1,41 @@
+# ============================================================
+# DEPENDENCIAS USADAS EN EL PROYECTO
+# ============================================================
+# spring-boot-starter-data-jpa      -> Acceso a BD con JPA
+# spring-boot-starter-webmvc        -> API REST (no reactiva)
+# h2                                -> Base de datos en memoria
+# lombok                            -> Boilerplate (getters, setters...)
+# spring-boot-starter-validation    -> Validaciones
+# ============================================================
+
+spring:
+  application:
+    name: producto
+
+  datasource:
+    url: jdbc:h2:mem:productodb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: ${SECRET_USERNAME:sa}
+    password: ${SECRET_PASSWORD:password}
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+server:
+  port: ${APP_PORT:8080}
